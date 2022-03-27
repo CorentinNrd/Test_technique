@@ -95,11 +95,10 @@ export default {
         .then((res) => res.json())
         .then(
           (data) => (
-            console.log(data),
             (this.error = data.error),
             (this.errorInfo = data.error_info),
             this.errorInfo || this.error
-              ? console.log(data)
+              ? ""
               : (window.location = "/"),
             (this.value = { id: data.user._id, email: data.user.email }),
             sessionStorage.setItem("data_user", JSON.stringify(this.value))
