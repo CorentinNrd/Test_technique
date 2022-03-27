@@ -6,9 +6,22 @@
       <li><router-link to="/chercher">Rechercher</router-link></li>
       <li><router-link to="/">Qui sommes-nous ?</router-link></li>
     </ul>
-    <ul class="flex gap-20">
-      <li><router-link to="/connexion">Connexion</router-link></li>
-      <li><router-link to="/inscription">Inscription</router-link></li>
+    <ul class="flex gap-20" v-if="user?.email">
+      <p>{{ user.email }}</p>
+      <li class="cursor-pointer hover:underline">
+        <router-link to="/">Account</router-link>
+      </li>
+      <li>
+        <button v-on:click="testFunction">Logout</button>
+      </li>
+    </ul>
+    <ul class="flex gap-20" v-else>
+      <li class="cursor-pointer hover:underline">
+        <router-link to="/connexion">Connexion</router-link>
+      </li>
+      <li class="cursor-pointer hover:underline">
+        <router-link to="/inscription">Inscription</router-link>
+      </li>
     </ul>
   </nav>
   <router-view />
@@ -17,14 +30,24 @@
 <script>
 export default {
   name: "nav-component",
+  setup() {
+    let user = JSON.parse(sessionStorage.getItem("data_user"));
+    return { user };
+  },
+  methods: {
+    testFunction() {
+      sessionStorage.clear(),
+      window.location = "/connexion"
+    }
+  },
 };
 </script>
 
 <style>
-li {
+li a {
   cursor: pointer;
 }
-li:hover {
+li a:hover {
   text-decoration: underline;
 }
 </style>
