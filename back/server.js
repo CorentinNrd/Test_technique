@@ -25,9 +25,10 @@ const clinical = require('./Routes/clinicalRoute')
 app.use("/login", login);
 app.use("/register", register);
 app.use("/clinical", clinical);
+// app.use("/clinical/search", clinical);
 
 app.get('/',  (req, res) => {
-    console.log('ici')
+    res.sendStatus(200)
 })
 
 app.listen(apiPort, () => console.log(`Server running on port http://localhost:${apiPort}`))
