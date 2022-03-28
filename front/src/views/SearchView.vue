@@ -336,7 +336,7 @@
           <li>Situation : {{ results.D }}</li>
           <li v-if="user?.email">
             <button
-              @click="saveClinical(results)"
+              @click="saveClinical(results, user.id)"
               class="
                 cursor-pointer
                 border
@@ -371,11 +371,11 @@ export default {
     };
   },
   methods: {
-    saveClinical: function (res) {
+    saveClinical: function (res, id_user) {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ essai: res }),
+        body: JSON.stringify({ essai: res, user: id_user }),
       };
       fetch("http://localhost:8000/clinical/save", requestOptions)
         .then((res) => res.json())
