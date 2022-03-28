@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 mt-[10%]">
+  <div class="grid grid-cols-2 mt-10">
     <form class="flex flex-col gap-7 ml-[20%]" @submit.prevent="createPost">
       <section id="situation" class="flex">
         <div>
