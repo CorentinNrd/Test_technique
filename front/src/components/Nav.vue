@@ -1,18 +1,17 @@
 <template>
-  <nav class="flex justify-between ml-5 mr-5 mt-2">
+  <nav class="flex justify-between ml-5 mr-5 mt-4 mb-2 h-8">
     <ul class="flex gap-20">
-      <li>Logo</li>
-      <li><router-link to="/">Home</router-link></li>
+      <li class="w-[54px] h-[26px] rounded-full bg-blue-300"></li>
+      <li><router-link to="/">Accueil</router-link></li>
       <li><router-link to="/chercher">Rechercher</router-link></li>
-      <li><router-link to="/">Qui sommes-nous ?</router-link></li>
     </ul>
     <ul class="flex gap-20" v-if="user?.email">
       <p>{{ user.email }}</p>
       <li class="cursor-pointer hover:underline">
-        <router-link to="/">Account</router-link>
+        <router-link to="/compte">Compte</router-link>
       </li>
       <li>
-        <button v-on:click="testFunction">Logout</button>
+        <button v-on:click="testFunction">Déconnexion</button>
       </li>
     </ul>
     <ul class="flex gap-20" v-else>
@@ -24,6 +23,7 @@
       </li>
     </ul>
   </nav>
+  <hr />
   <router-view />
 </template>
 
@@ -36,18 +36,19 @@ export default {
   },
   methods: {
     testFunction() {
-      sessionStorage.clear(),
-      window.location = "/connexion"
-    }
+      sessionStorage.clear(), (window.location = "/connexion");
+    },
   },
 };
 </script>
 
 <style>
-li a {
+li a,
+li button {
   cursor: pointer;
 }
-li a:hover {
+li a:hover,
+li button:hover {
   text-decoration: underline;
 }
 </style>
