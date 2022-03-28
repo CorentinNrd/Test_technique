@@ -330,10 +330,14 @@
     </form>
     <div id="result" class="w-full">
       <h1 class="text-lg underline text-center">Résultats</h1>
-      <p class="text-red-600">{{ errorSave }}</p>
+      <p class="text-red-600 mt-10 text-center">{{ errorSave }}</p>
+      <p v-if="error" class="mt-10 text-center">{{ error }}</p>
       <div class="grid grid-cols-2 mt-10 justify-items-center">
-        <p v-if="error">{{ error }}</p>
-        <ul v-for="results in result" v-bind:key="results.id" class="text-left mb-7 border w-3/4">
+        <ul
+          v-for="results in result"
+          v-bind:key="results.id"
+          class="text-left mb-7 border w-3/4"
+        >
           <li class="mt-3 ml-3">ID : {{ results.A }}</li>
           <li class="mt-3 ml-3">Spécialité : {{ results.B }}</li>
           <li class="mt-3 ml-3">Organes : {{ results.C }}</li>
