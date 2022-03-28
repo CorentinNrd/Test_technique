@@ -326,6 +326,7 @@
     </form>
     <div id="result">
       <h1>Résultats</h1>
+      <p class="text-red-600">{{ errorSave }}</p>
       <div class="grid grid-cols-2 mt-10">
         <p v-if="error">{{ error }}</p>
         <ul v-for="results in result" v-bind:key="results.id" class="mb-7">
@@ -333,6 +334,23 @@
           <li>Spécialité : {{ results.B }}</li>
           <li>Organes : {{ results.C }}</li>
           <li>Situation : {{ results.D }}</li>
+          <li v-if="user?.email">
+            <button
+              @click="saveClinical(results)"
+              class="
+                cursor-pointer
+                border
+                font-bold
+                py-2
+                px-4
+                rounded
+                focus:outline-none focus:shadow-outline
+                hover:bg-blue-400 hover:text-white
+              "
+            >
+              Enregister {{ results.A }}
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -345,12 +363,30 @@ export default {
   data() {
     return {
       post: {},
+      essai: {},
       error: null,
-      errorInfo: null,
+      errorSave: null,
       result: null,
+      user: JSON.parse(sessionStorage.getItem("data_user")),
     };
   },
   methods: {
+    saveClinical: function (res) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ essai: res }),
+      };
+      fetch("http://localhost:8000/clinical/save", requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+          this.errorSave = data.error;
+          if (this.errorSave != "") {
+            setTimeout(() => { this.errorSave = "" }, 2000)
+          }
+        })
+        .catch((err) => console.log(err));
+    },
     async createPost() {
       const requestOptions = {
         method: "POST",
@@ -360,11 +396,10 @@ export default {
       fetch("http://localhost:8000/clinical/search", requestOptions)
         .then((res) => res.json())
         .then((data) => {
-            data.length == 0 ?
-            (this.error = "aucun résultat")
-            :
-            (this.error = ""),
-            (this.result = data)
+          data.length == 0
+            ? (this.error = "aucun résultat")
+            : (this.error = ""),
+            (this.result = data);
         })
         .catch((err) => console.log(err));
     },
