@@ -144,7 +144,76 @@
         </div>
       </section>
 
-      <section id="organes" class="flex ml-3">
+      <section id="organes" class="flex ml-3" v-if="post.specialite === 'Gynécologie'">
+        <div>
+          <h1 class="text-1xl underline mb-5">Organes :</h1>
+          <div class="form-check">
+            <input
+              id="Ovaire"
+              type="radio"
+              v-model="post.organes"
+              value="Ovaire"
+              class="
+                form-check-input
+                appearance-none
+                rounded-full
+                h-4
+                w-4
+                border border-gray-300
+                bg-white
+                checked:bg-blue-600 checked:border-blue-600
+                focus:outline-none
+                transition
+                duration-200
+                mt-1
+                align-top
+                bg-no-repeat bg-center bg-contain
+                float-left
+                mr-2
+                cursor-pointer
+              "
+            />
+            <label
+              for="Ovaire"
+              class="form-check-label inline-block text-gray-800"
+              >Ovaire</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              id="Sein"
+              type="radio"
+              v-model="post.organes"
+              value="Sein"
+              class="
+                form-check-input
+                appearance-none
+                rounded-full
+                h-4
+                w-4
+                border border-gray-300
+                bg-white
+                checked:bg-blue-600 checked:border-blue-600
+                focus:outline-none
+                transition
+                duration-200
+                mt-1
+                align-top
+                bg-no-repeat bg-center bg-contain
+                float-left
+                mr-2
+                cursor-pointer
+              "
+            />
+            <label
+              for="Sein"
+              class="form-check-label inline-block text-gray-800"
+              >Sein</label
+            >
+          </div>
+        </div>
+      </section>
+      <section id="organes" class="flex ml-3" v-else-if="post.specialite === 'Thoracique'">
         <div>
           <h1 class="text-1xl underline mb-5">Organes :</h1>
           <div class="form-check">
@@ -241,70 +310,6 @@
               for="Plèvre"
               class="form-check-label inline-block text-gray-800"
               >Plèvre</label
-            >
-          </div>
-          <div class="form-check">
-            <input
-              id="Ovaire"
-              type="radio"
-              v-model="post.organes"
-              value="Ovaire"
-              class="
-                form-check-input
-                appearance-none
-                rounded-full
-                h-4
-                w-4
-                border border-gray-300
-                bg-white
-                checked:bg-blue-600 checked:border-blue-600
-                focus:outline-none
-                transition
-                duration-200
-                mt-1
-                align-top
-                bg-no-repeat bg-center bg-contain
-                float-left
-                mr-2
-                cursor-pointer
-              "
-            />
-            <label
-              for="Ovaire"
-              class="form-check-label inline-block text-gray-800"
-              >Ovaire</label
-            >
-          </div>
-          <div class="form-check">
-            <input
-              id="Sein"
-              type="radio"
-              v-model="post.organes"
-              value="Sein"
-              class="
-                form-check-input
-                appearance-none
-                rounded-full
-                h-4
-                w-4
-                border border-gray-300
-                bg-white
-                checked:bg-blue-600 checked:border-blue-600
-                focus:outline-none
-                transition
-                duration-200
-                mt-1
-                align-top
-                bg-no-repeat bg-center bg-contain
-                float-left
-                mr-2
-                cursor-pointer
-              "
-            />
-            <label
-              for="Sein"
-              class="form-check-label inline-block text-gray-800"
-              >Sein</label
             >
           </div>
         </div>
