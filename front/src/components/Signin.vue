@@ -56,6 +56,7 @@
         <button
           class="
             border
+            bg-blue-300
             font-bold
             py-2
             px-4
@@ -98,7 +99,10 @@ export default {
             (this.error = data.error),
             (this.errorInfo = data.error_info),
             this.errorInfo || this.error
-              ? ""
+              ? setTimeout(() => {
+                this.error = ""
+                this.errorInfo = ""
+              }, 2000)
               : (window.location = "/"),
             (this.value = { id: data.user._id, email: data.user.email }),
             sessionStorage.setItem("data_user", JSON.stringify(this.value))
