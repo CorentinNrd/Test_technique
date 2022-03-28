@@ -1,39 +1,46 @@
 <template>
-  <div class="grid grid-cols-2">
+  <div class="grid grid-cols-6">
     <div class="flex flex-col items-center mt-10">
-      <h1>Vos informations</h1>
+      <h1 class="text-lg underline">Vos informations</h1>
       <div class="mt-10">
         <span>{{ user.email }}</span>
       </div>
     </div>
-    <div class="flex flex-col items-center mt-10">
-      <h1>Vos essais clinique enregistré</h1>
+    <div class="mt-10 col-end-7 col-span-4">
+      <h1 class="text-lg underline">Vos essais clinique enregistrés</h1>
       <p v-if="status" class="text-red-600">{{ status }}</p>
       <p v-if="error" class="text-red-600">{{ error }}</p>
-      <ul v-for="infos in info" v-bind:key="infos.id" class="mb-7 mt-10">
-        <li>ID : {{ infos.ID }}</li>
-        <li>Spécialité : {{ infos.sepcialite }}</li>
-        <li>Organe : {{ infos.organes }}</li>
-        <li>Situation : {{ infos.situation }}</li>
-        <li>Enregistré le : {{ infos.createdAt }}</li>
-        <li>
-          <button
-            class="
-              cursor-pointer
-              border
-              font-bold
-              py-2
-              px-4
-              rounded
-              focus:outline-none focus:shadow-outline
-              hover:bg-red-600 hover:text-white
-            "
-            @click="Delete(infos.ID, user.id)"
-          >
-            Supprimer
-          </button>
-        </li>
-      </ul>
+      <div class="grid grid-cols-2 gap-4 mr-5 mt-10">
+        <ul
+          v-for="infos in info"
+          v-bind:key="infos.id"
+          class="mb-7 border"
+        >
+          <li class="ml-4 mt-4">ID : {{ infos.ID }}</li>
+          <li class="ml-4 mt-4">Spécialité : {{ infos.specialite }}</li>
+          <li class="ml-4 mt-4">Organe : {{ infos.organes }}</li>
+          <li class="ml-4 mt-4">Situation : {{ infos.situation }}</li>
+          <li class="ml-4 mt-4">Enregistré le : {{ infos.createdAt }}</li>
+          <li class="ml-4 mr-4 mb-4 mt-4">
+            <button
+              class="
+                cursor-pointer
+                bg-red-500
+                border
+                font-bold
+                py-2
+                w-full
+                rounded
+                focus:outline-none focus:shadow-outline
+                hover:bg-red-600 hover:text-white
+              "
+              @click="Delete(infos.ID, user.id)"
+            >
+              Supprimer
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -78,7 +85,7 @@ export default {
             this.status = data.OK;
             setTimeout(() => {
               this.status = "";
-              window.location.reload(true)
+              window.location.reload(true);
             }, 2000);
           } else {
             this.error = data.error;
