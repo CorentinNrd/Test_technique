@@ -1,8 +1,7 @@
 <template>
-  <div class="grid grid-cols-6 gap-4 mt-20 mb-[10%]">
-    <h1 class="text-lg underline ml-6">Rechercher</h1>
+  <div class="flex justify-between mt-10">
     <form
-      class="flex flex-col gap-7 ml-[10%] border col-start-1 col-end-2"
+      class="flex flex-col gap-7 border ml-5 mr-5 w-1/4"
       @submit.prevent="createPost"
     >
       <section id="situation" class="flex ml-3 mt-3">
@@ -329,17 +328,17 @@
         />
       </div>
     </form>
-    <div id="result" class="col-end-7 col-span-4">
+    <div id="result" class="w-full">
       <h1 class="text-lg underline text-center">Résultats</h1>
       <p class="text-red-600">{{ errorSave }}</p>
-      <div class="grid grid-cols-2 mt-10 mr-10 justify-items-center">
+      <div class="grid grid-cols-2 mt-10 justify-items-center">
         <p v-if="error">{{ error }}</p>
         <ul v-for="results in result" v-bind:key="results.id" class="text-left mb-7 border w-3/4">
           <li class="mt-3 ml-3">ID : {{ results.A }}</li>
           <li class="mt-3 ml-3">Spécialité : {{ results.B }}</li>
           <li class="mt-3 ml-3">Organes : {{ results.C }}</li>
           <li class="mt-3 ml-3">Situation : {{ results.D }}</li>
-          <li v-if="user?.email" class="mt-3 ml-3 mb-3">
+          <li v-if="user?.email" class="mt-3 ml-3 mb-3 mr-3">
             <button
               @click="saveClinical(results, user.id)"
               class="
@@ -348,7 +347,7 @@
                 border
                 font-bold
                 py-2
-                px-4
+                w-full
                 rounded
                 focus:outline-none focus:shadow-outline
                 hover:bg-blue-400 hover:text-white
