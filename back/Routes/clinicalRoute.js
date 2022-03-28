@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
+const EssaiModel = require('../Model/EssaiModel')
 const excelToJson = require('convert-excel-to-json');
 
 const result = excelToJson({
@@ -23,7 +24,7 @@ router.post("/search", async (req, res, next) => {
         if (req.body.search.specialite == element.B) {
             array.push(element)
             return element;
-        } 
+        }
         if (req.body.search.organes === element.C) {
             array.push(element)
         }
@@ -32,6 +33,36 @@ router.post("/search", async (req, res, next) => {
         }
     })
     res.send(array)
+})
+
+router.post("/save", async (req, res, next) => {
+    let ID = req.body.essai.A
+    let specialite = req.body.essai.B
+    let organes = req.body.essai.C
+    let situation = req.body.essai.D
+
+    if (ID && specialite && organes && situation) {
+        let essai = await EssaiModel.findOne({
+            $or: [
+                { ID: ID },
+            ]
+        })
+            .catch((error) => {
+                console.log(error);
+            });
+        if (essai == null) {
+            let data = {
+                ID: req.body.essai.A,
+                specialite: req.body.essai.B,
+                organes: req.body.essai.C,
+                situation: req.body.essai.D
+            }
+            EssaiModel.create(data)
+        } else {
+            let string = { error: "Cet essai clinique à déjà été enregistré!" };
+            res.send(string)
+        }
+    }
 })
 
 module.exports = router;
