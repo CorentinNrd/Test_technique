@@ -67,4 +67,24 @@ router.post("/save", async (req, res, next) => {
     }
 })
 
+router.post("/delete", async (req, res, next) => {
+    let ID = req.body.essai;
+    let id_user = req.body.user;
+
+    if (ID && id_user) {
+        let essai = await EssaiModel.deleteOne({
+            $or: [
+                { id_user: id_user, ID: ID }
+            ]
+        })
+        if (essai) {
+            let string = { OK: "L'essai clinique a bien été supprimé!" }
+            res.send(string)
+        } else {
+            let string = { error: "Veuillez réessayer!" }
+            res.send(string)
+        }
+    }
+})
+
 module.exports = router;
