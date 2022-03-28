@@ -58,7 +58,7 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="confirmPassword"
         >
-          Sélectionner votre genre
+          Genre
         </label>
         <select
           name="gender"
@@ -90,6 +90,7 @@
         <button
           class="
             border
+            bg-blue-300
             font-bold
             py-2
             px-4
@@ -127,12 +128,16 @@ export default {
       };
       fetch("http://localhost:8000/register", requestOptions)
         .then((res) => res.json())
-        .then(
-          (data) => (
-            (this.error = data.error),
-            (this.errorInfo = data.error_info)
-          )
-        )
+        .then((data) => {
+          (this.error = data.error),
+            (this.errorInfo = data.error_info),
+            this.errorInfo || this.error
+              ? setTimeout(() => {
+                  this.error = "";
+                  this.errorInfo = "";
+                }, 2000)
+              : this.$router.push("/connexion");
+        })
         .catch((err) => console.log(err));
     },
   },
