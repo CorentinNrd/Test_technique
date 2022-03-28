@@ -21,10 +21,12 @@ app.use(session({
 const login = require('./Routes/LoginRoute')
 const register = require('./Routes/RegisterRoute')
 const clinical = require('./Routes/clinicalRoute')
+const account = require('./Routes/AccountRoute')
 
 app.use("/login", login);
 app.use("/register", register);
 app.use("/clinical", clinical);
+app.use("/account", account);
 
 app.get('/',  (req, res) => {
     res.sendStatus(200)
