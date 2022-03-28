@@ -24,8 +24,6 @@ router.post("/search", async (req, res, next) => {
     let situation = req.body.search.situation;
     let specialite = req.body.search.specialite;
 
-    console.log(organes);
-
     result.Sheet1.map(element => {
         if (specialite == element.B && situation == element.D) {
             array.push(element)
