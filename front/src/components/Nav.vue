@@ -11,7 +11,7 @@
         <router-link to="/compte">Compte</router-link>
       </li>
       <li>
-        <button v-on:click="testFunction">Déconnexion</button>
+        <button class="hover:underline" v-on:click="testFunction">Déconnexion</button>
       </li>
     </ul>
     <ul class="flex gap-20" v-else>
@@ -47,8 +47,7 @@ li a,
 li button {
   cursor: pointer;
 }
-li a:hover,
-li button:hover {
+li a:hover {
   text-decoration: underline;
 }
 </style>
