@@ -1,9 +1,13 @@
 <template>
-  <div class="grid grid-cols-2 mt-10">
-    <form class="flex flex-col gap-7 ml-[20%]" @submit.prevent="createPost">
-      <section id="situation" class="flex">
+  <div class="grid grid-cols-6 gap-4 mt-20 mb-[10%]">
+    <h1 class="text-lg underline ml-6">Rechercher</h1>
+    <form
+      class="flex flex-col gap-7 ml-[10%] border col-start-1 col-end-2"
+      @submit.prevent="createPost"
+    >
+      <section id="situation" class="flex ml-3 mt-3">
         <div>
-          <h1 class="text-1xl underline mb-5">Situation</h1>
+          <h1 class="text-1xl underline mb-5">Situation :</h1>
           <div class="form-check">
             <input
               id="Métastatique"
@@ -71,9 +75,9 @@
         </div>
       </section>
 
-      <section id="specialite" class="flex">
+      <section id="specialite" class="flex ml-3">
         <div>
-          <h1 class="text-1xl underline mb-5">Spécialité</h1>
+          <h1 class="text-1xl underline mb-5">Spécialité :</h1>
           <div class="form-check">
             <input
               id="Gynécologie"
@@ -141,9 +145,9 @@
         </div>
       </section>
 
-      <section id="organes" class="flex">
+      <section id="organes" class="flex ml-3">
         <div>
-          <h1 class="text-1xl underline mb-5">Organes</h1>
+          <h1 class="text-1xl underline mb-5">Organes :</h1>
           <div class="form-check">
             <input
               id="Poumon"
@@ -307,14 +311,15 @@
         </div>
       </section>
 
-      <div>
+      <div class="ml-3 mb-3 mr-3">
         <input
           class="
             cursor-pointer
+            bg-blue-300
             border
             font-bold
             py-2
-            px-4
+            w-full
             rounded
             focus:outline-none focus:shadow-outline
             hover:bg-blue-400 hover:text-white
@@ -324,21 +329,22 @@
         />
       </div>
     </form>
-    <div id="result">
-      <h1>Résultats</h1>
+    <div id="result" class="col-end-7 col-span-4">
+      <h1 class="text-lg underline text-center">Résultats</h1>
       <p class="text-red-600">{{ errorSave }}</p>
-      <div class="grid grid-cols-2 mt-10">
+      <div class="grid grid-cols-2 mt-10 mr-10 justify-items-center">
         <p v-if="error">{{ error }}</p>
-        <ul v-for="results in result" v-bind:key="results.id" class="mb-7">
-          <li>ID : {{ results.A }}</li>
-          <li>Spécialité : {{ results.B }}</li>
-          <li>Organes : {{ results.C }}</li>
-          <li>Situation : {{ results.D }}</li>
-          <li v-if="user?.email">
+        <ul v-for="results in result" v-bind:key="results.id" class="text-left mb-7 border w-3/4">
+          <li class="mt-3 ml-3">ID : {{ results.A }}</li>
+          <li class="mt-3 ml-3">Spécialité : {{ results.B }}</li>
+          <li class="mt-3 ml-3">Organes : {{ results.C }}</li>
+          <li class="mt-3 ml-3">Situation : {{ results.D }}</li>
+          <li v-if="user?.email" class="mt-3 ml-3 mb-3">
             <button
               @click="saveClinical(results, user.id)"
               class="
                 cursor-pointer
+                bg-blue-300
                 border
                 font-bold
                 py-2
@@ -382,7 +388,9 @@ export default {
         .then((data) => {
           this.errorSave = data.error;
           if (this.errorSave != "") {
-            setTimeout(() => { this.errorSave = "" }, 2000)
+            setTimeout(() => {
+              this.errorSave = "";
+            }, 2000);
           }
         })
         .catch((err) => console.log(err));
