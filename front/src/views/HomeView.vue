@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="w-full h-[300px] bg-slate-500"></div>
+    <div class="w-full h-[300px] bg-blue-300"></div>
     <div class="grid grid-cols-2 ml-5">
       <div class="mt-10">
-        <h1 class="text-lg mb-5 underline">Essais clinique</h1>
+        <h1 class="text-lg mb-5 underline">Essais cliniques</h1>
         <div class="grid grid-cols-2 ">
           <ul
             v-for="infos in info"
@@ -60,7 +60,7 @@ export default {
     onMounted(() => {
       fetch("http://localhost:8000/clinical")
         .then((res) => res.json())
-        .then((data) => (info.value = data));
+        .then((data) => (info.value = data.slice(0, 4)));
     });
     return { info, user };
   },
