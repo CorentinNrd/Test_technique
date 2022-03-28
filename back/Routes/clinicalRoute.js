@@ -20,18 +20,28 @@ router.get("/", async (req, res, next) => {
 
 router.post("/search", async (req, res, next) => {
     let array = [];
+    let organes = req.body.search.organes;
+    let situation = req.body.search.situation;
+    let specialite = req.body.search.specialite;
+
+    console.log(organes);
+
     result.Sheet1.map(element => {
-        if (req.body.search.specialite == element.B) {
+        if (specialite == element.B && situation == element.D) {
+            array.push(element)
+            return element;
+        } else if (specialite == undefined && situation == element.D) {
+            array.push(element)
+            return element;
+        } else if (specialite == element.B && situation == undefined) {
+            array.push(element)
+            return element;
+        } else if (organes === element.C && specialite == element.B && situation == element.D) {
             array.push(element)
             return element;
         }
-        if (req.body.search.organes === element.C) {
-            array.push(element)
-        }
-        if (req.body.search.situation == element.D) {
-            array.push(element)
-        }
     })
+
     res.send(array)
 })
 
