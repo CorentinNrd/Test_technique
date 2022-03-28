@@ -25,12 +25,14 @@ router.post("/", async (req, res, next) => {
             let data = req.body.user
             data.password = await bcrypt.hash(password, 10);
             UserModel.create(data)
+            let string = {OK: "Compte créer"}
+            res.send(string)
         } else {
             let string = { error: "Il y'a déjà un compte associé à cette adresse!" };
             res.send(string)
         }
     } else {
-        let stringError = { error_info: "Vous devez obligatoirement rentrer un mail et un mot de passe!" }
+        let stringError = { error_info: "Vous devez obligatoirement rentrer un mail et un mot de passe et un genre!" }
         res.send(stringError)
     }
 })
