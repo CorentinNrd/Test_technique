@@ -7,9 +7,6 @@
         <li>Spécialité : {{ infos.B }}</li>
         <li>Organe : {{ infos.C }}</li>
         <li>Situation : {{ infos.D }}</li>
-        <li v-if="user?.email">
-          <button>Enregister {{ infos.A }}</button>
-        </li>
       </ul>
     </div>
   </div>
