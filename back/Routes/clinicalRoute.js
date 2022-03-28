@@ -40,8 +40,9 @@ router.post("/save", async (req, res, next) => {
     let specialite = req.body.essai.B
     let organes = req.body.essai.C
     let situation = req.body.essai.D
+    let id_user = req.body.user
 
-    if (ID && specialite && organes && situation) {
+    if (ID && id_user && specialite && organes && situation) {
         let essai = await EssaiModel.findOne({
             $or: [
                 { ID: ID },
@@ -53,6 +54,7 @@ router.post("/save", async (req, res, next) => {
         if (essai == null) {
             let data = {
                 ID: req.body.essai.A,
+                id_user: req.body.user,
                 specialite: req.body.essai.B,
                 organes: req.body.essai.C,
                 situation: req.body.essai.D
