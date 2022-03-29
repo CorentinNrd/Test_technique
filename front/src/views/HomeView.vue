@@ -18,7 +18,7 @@
         </div>
       </div>
       <!-- ____________________________________ -->
-      <div class="flex flex-col mt-10 gap-7 ml-3 mr-3 mb-10 md:mr-0 md:ml-0 sm:mr-0 sm:ml-0">
+      <div class="flex flex-col mt-10 gap-7 ml-10 mr-5 mb-10 md:mr-0 md:ml-0 sm:mr-0 sm:ml-0">
         <aside class="w-full">
           <h1 class="text-lg mb-5 underline">Qui sommes nous ?</h1>
           <p>
