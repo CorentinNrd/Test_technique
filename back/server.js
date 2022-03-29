@@ -23,6 +23,7 @@ const register = require('./Routes/RegisterRoute')
 const clinical = require('./Routes/clinicalRoute')
 const account = require('./Routes/AccountRoute')
 
+// CREATION DES ROUTES SERVER POUR RECUPERER OU ENVOYER DES INFORMATIONS
 app.use("/login", login);
 app.use("/register", register);
 app.use("/clinical", clinical);

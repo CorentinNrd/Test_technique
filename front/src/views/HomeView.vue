@@ -55,6 +55,7 @@
 import { ref, onMounted } from "vue";
 export default {
   setup() {
+    // RECUPERATION DE TOUT LES ESSAIS CLINIQUES ET AFFICHAGE UNIQUEMENT 4
     let info = ref(null);
     let user = JSON.parse(sessionStorage.getItem("data_user"));
     onMounted(() => {

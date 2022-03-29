@@ -86,6 +86,7 @@ export default {
     };
   },
   methods: {
+    // ENVOIE DES DONNEES DU FORMULAIRE DE CONNEXION AFIN DE DEMARRER LA SESSION DU CLIENT
     async createPost() {
       const requestOptions = {
         method: "POST",

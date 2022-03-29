@@ -21,6 +21,7 @@
       "
       @submit.prevent="createPost"
     >
+      <!-- SECTION FILTRES DE SITUATION -->
       <section id="situation" class="flex ml-3 mt-3">
         <div>
           <h1 class="text-1xl underline mb-5">Situation :</h1>
@@ -91,6 +92,7 @@
         </div>
       </section>
 
+      <!-- SECTION FILTRES DE SPECIALITE -->
       <section id="specialite" class="flex ml-3">
         <div>
           <h1 class="text-1xl underline mb-5">Spécialité :</h1>
@@ -161,6 +163,7 @@
         </div>
       </section>
 
+      <!-- SECTION FILTRES D'ORGANES SI LA SPECIALITE SELECTIONNE EST GYNECOLOGIE-->
       <section
         id="organes"
         class="flex ml-3"
@@ -234,6 +237,8 @@
           </div>
         </div>
       </section>
+
+      <!-- SECTION FILTRES D'ORGANES SI LA SPECIALITE SELECTIONNE EST THORACIQUE-->
       <section
         id="organes"
         class="flex ml-3"
@@ -340,6 +345,7 @@
         </div>
       </section>
 
+      <!-- SECTION FILTRES D'ORGANES-->
       <section id="organes" class="flex ml-3" v-else>
         <div>
           <h1 class="text-1xl underline mb-5">Organes :</h1>
@@ -524,6 +530,8 @@
         />
       </div>
     </form>
+
+    <!-- AFFICHAGE DES RESULTATS -->
     <div id="result" class="w-full">
       <h1 class="text-lg underline text-center md:mt-10 sm:mt-10">Résultats</h1>
       <p class="text-red-600 mt-10 text-center">{{ errorSave }}</p>
@@ -586,6 +594,7 @@ export default {
     };
   },
   methods: {
+    // ENREGISTREMENT DE L'ESSAI SUR LE COMPTE DU PATIENT DANS LA BASE DE DONNEE
     saveClinical: function (res, id_user) {
       const requestOptions = {
         method: "POST",
@@ -597,8 +606,8 @@ export default {
         .then((data) => {
           console.log(data.OK);
           if (data.OK) {
-            this.save = data.OK
-            if(this.save != "") {
+            this.save = data.OK;
+            if (this.save != "") {
               setTimeout(() => {
                 this.save = "";
               }, 2000);
@@ -614,6 +623,7 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+    // FONCTION DE RECHERCHE, ENVOIE DES FILTRES ET RECUPERATION DU RESULTAT
     async createPost() {
       const requestOptions = {
         method: "POST",

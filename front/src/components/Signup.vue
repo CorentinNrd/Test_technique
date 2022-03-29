@@ -120,6 +120,7 @@ export default {
     };
   },
   methods: {
+    // ENVOIE DES INFORMATIONS DU FORMULAIRE AFIN DE CREER LE COMPTE DU CLIENt
     async createPost() {
       const requestOptions = {
         method: "POST",

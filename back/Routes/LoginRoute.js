@@ -7,6 +7,8 @@ const UserModel = require('../Model/UserModel')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// VERIFICATION DES INFORMATIONS DU PATIENT A LA CONNEXION AVEC CELLES DANS LA BASE DE DONNEE ET CREATION DE LA SESSION 
+// EN CAS DE SUCCES
 router.post("/", async (req, res, next) => {
     let email = req.body.user.email;
     let password = req.body.user.password;

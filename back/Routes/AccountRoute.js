@@ -7,6 +7,8 @@ const EssaiModel = require('../Model/EssaiModel')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+// RECUPERATION DES ESSAIS CLINIQUE DU PATIENT GRACE A SON ID D'UTILISATEUR
 router.post("/", async (req, res, next) => {
     let id_user = req.body.user;
 

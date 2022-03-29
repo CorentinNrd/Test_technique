@@ -7,6 +7,7 @@ const UserModel = require('../Model/UserModel')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// RECUPERATION DES INFORMATIONS DONNEES PAR LE PATIENT LORS DE L'INSCRIPTION ET CREATION DU CLIENT DANS LA BDD EN CAS DE SUCCES
 router.post("/", async (req, res, next) => {
     let email = req.body.user.email;
     let password = req.body.user.password;

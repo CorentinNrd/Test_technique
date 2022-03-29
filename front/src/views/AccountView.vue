@@ -49,6 +49,7 @@
 import { ref, onMounted } from "vue";
 export default {
   setup() {
+    // RECUPERATION ET AFFICHAGE DES ESSAIS CLINIQUES ENREGISTRER DU PATIENT
     let info = ref(null);
     let user = JSON.parse(sessionStorage.getItem("data_user"));
     onMounted(() => {
@@ -72,6 +73,7 @@ export default {
     };
   },
   methods: {
+    // SUPPRESSION DE L'ESSAI CLINIQUE DU CLIENT
     Delete: function (id_essai, id_user) {
       const requestOptions = {
         method: "POST",

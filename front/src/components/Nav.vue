@@ -22,7 +22,7 @@
           width="1.5em"
           height="1.5em"
           viewBox="0 0 24 24"
-          v-on:click="testFunction"
+          v-on:click="logout"
         >
           <path
             fill="currentColor"
@@ -56,7 +56,8 @@ export default {
     return { user };
   },
   methods: {
-    testFunction() {
+    // SUPPRESSION DE LA SESSION DE L'UTILISATEUR POUR LE DECONNECTER
+    logout() {
       sessionStorage.clear(), (window.location = "/connexion");
     },
   },

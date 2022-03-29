@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const EssaiModel = require('../Model/EssaiModel')
 const excelToJson = require('convert-excel-to-json');
 
+// CONVERTION DU FICHIER EXCEL EN JSON
 const result = excelToJson({
     sourceFile: 'essai_clinique.xlsx',
     header: {
@@ -14,10 +15,12 @@ const result = excelToJson({
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// RECUPERATION DE TOUT LES ESSAIS CLINIQUES
 router.get("/", async (req, res, next) => {
     res.send(result.Sheet1)
 })
 
+// RECHERCHE DANS L'OBJET CONTENANT LES ESSAIS CLINIQUES DU FICHIER EXCEL
 router.post("/search", async (req, res, next) => {
     let array = [];
     let organes = req.body.search.organes;
@@ -48,6 +51,7 @@ router.post("/search", async (req, res, next) => {
     res.send(array)
 })
 
+// ENREGISTREMENT DE L'ESSAI DU CLINIQUE DANS LA BASE DE DONNEE AVEC L'ID DU PATIENT
 router.post("/save", async (req, res, next) => {
     let ID = req.body.essai.A
     let specialite = req.body.essai.B
@@ -82,6 +86,7 @@ router.post("/save", async (req, res, next) => {
     }
 })
 
+// SUPPRESSION DE L'ESSAI CLINIQUE DU COMPTE DU CLIENT ET DE LA BASE DE DONNE
 router.post("/delete", async (req, res, next) => {
     let ID = req.body.essai;
     let id_user = req.body.user;
