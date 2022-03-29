@@ -14,7 +14,7 @@
         <button class="hover:underline" v-on:click="testFunction">Déconnexion</button>
       </li>
     </ul>
-    <ul class="flex gap-20" v-else>
+    <ul class="flex gap-20 sm:gap-5" v-else>
       <li class="cursor-pointer hover:underline">
         <router-link to="/connexion">Connexion</router-link>
       </li>
