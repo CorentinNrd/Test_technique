@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-6">
+  <div class="grid grid-cols-6 sm:flex sm:flex-col">
     <div class="flex flex-col items-center mt-10">
       <h1 class="text-lg underline">Vos informations</h1>
       <div class="mt-10">
@@ -7,10 +7,10 @@
       </div>
     </div>
     <div class="mt-10 col-end-7 col-span-4">
-      <h1 class="text-lg underline">Vos essais clinique enregistrés</h1>
+      <h1 class="text-lg underline sm:text-center">Vos essais clinique enregistrés</h1>
       <p v-if="status" class="text-red-600">{{ status }}</p>
       <p v-if="error" class="text-red-600">{{ error }}</p>
-      <div class="grid grid-cols-2 gap-4 mr-5 mt-10">
+      <div class="grid grid-cols-2 gap-4 mr-5 mt-10 sm:flex sm:flex-col sm:justify-items-center sm:mr-3 sm:ml-3">
         <ul
           v-for="infos in info"
           v-bind:key="infos.id"
