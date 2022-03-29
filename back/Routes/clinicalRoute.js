@@ -27,21 +27,23 @@ router.post("/search", async (req, res, next) => {
     result.Sheet1.map(element => {
         if (organes == element.C && specialite == element.B && situation == element.D) {
             array.push(element)
-            console.log("Dans le if", element);
             return element;
-        } else if (specialite == element.B && situation == element.D) {
+        } else if (organes == element.C && specialite == element.B && situation == undefined ) {
             array.push(element)
             return element;
-        } else if (specialite == undefined && situation == element.D) {
+        } else if (specialite == element.B && situation == element.D && organes == undefined) {
             array.push(element)
             return element;
-        } else if (specialite == element.B && situation == undefined) {
+        } else if (specialite == undefined && situation == element.D && organes == element.C) {
+            array.push(element)
+            return element;
+        } else if (specialite == element.B && situation == undefined && organes == undefined) {
             array.push(element)
             return element;
         }
     })
 
-    console.log("Hors du if", array);
+    console.log(array);
     res.send(array)
 })
 
