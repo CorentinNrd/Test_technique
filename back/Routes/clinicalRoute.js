@@ -73,6 +73,8 @@ router.post("/save", async (req, res, next) => {
                 situation: req.body.essai.D
             }
             EssaiModel.create(data)
+            let string = { OK: "L'essai clinique est bien enregistré!" };
+            res.send(string)
         } else {
             let string = { error: "Cet essai clinique à déjà été enregistré!" };
             res.send(string)

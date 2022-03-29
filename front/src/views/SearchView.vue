@@ -1,5 +1,13 @@
 <template>
-  <div class="flex justify-between mt-10 md:flex-col md:items-center sm:flex-col sm:items-center">
+  <div
+    class="
+      flex
+      justify-between
+      mt-10
+      md:flex-col md:items-center
+      sm:flex-col sm:items-center
+    "
+  >
     <form
       class="
         flex flex-col
@@ -520,6 +528,7 @@
       <h1 class="text-lg underline text-center md:mt-10 sm:mt-10">Résultats</h1>
       <p class="text-red-600 mt-10 text-center">{{ errorSave }}</p>
       <p v-if="error" class="mt-10 text-center">{{ error }}</p>
+      <p v-if="save" class="text-green-600 mt-10 text-center">{{ save }}</p>
       <div
         class="
           grid grid-cols-2
@@ -572,6 +581,7 @@ export default {
       error: null,
       errorSave: null,
       result: null,
+      save: null,
       user: JSON.parse(sessionStorage.getItem("data_user")),
     };
   },
@@ -585,11 +595,21 @@ export default {
       fetch("http://localhost:8000/clinical/save", requestOptions)
         .then((res) => res.json())
         .then((data) => {
-          this.errorSave = data.error;
-          if (this.errorSave != "") {
-            setTimeout(() => {
-              this.errorSave = "";
-            }, 2000);
+          console.log(data.OK);
+          if (data.OK) {
+            this.save = data.OK
+            if(this.save != "") {
+              setTimeout(() => {
+                this.save = "";
+              }, 2000);
+            }
+          } else {
+            this.errorSave = data.error;
+            if (this.errorSave != "") {
+              setTimeout(() => {
+                this.errorSave = "";
+              }, 2000);
+            }
           }
         })
         .catch((err) => console.log(err));
