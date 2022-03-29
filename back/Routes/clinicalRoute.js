@@ -40,6 +40,9 @@ router.post("/search", async (req, res, next) => {
         } else if (specialite == element.B && situation == undefined && organes == undefined) {
             array.push(element)
             return element;
+        } else if (specialite == undefined && situation == undefined && organes == element.C) {
+            array.push(element)
+            return element;
         }
     })
     res.send(array)
