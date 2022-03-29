@@ -2,7 +2,7 @@
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div class="flex justify-center mt-10">
     <form
-      class="w-1/4 bg-white shadow rounded border px-8 pt-8 pb-8 mb-4 sm:w-3/4"
+      class="w-1/4 bg-white shadow rounded border px-8 pt-8 pb-8 mb-4 md:w-3/4 sm:w-3/4"
       @submit.prevent="createPost"
     >
       <div class="mb-4">

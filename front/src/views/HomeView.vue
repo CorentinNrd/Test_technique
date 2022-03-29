@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full h-[300px] bg-blue-300"></div>
-    <div class="grid grid-cols-2 ml-5 sm:flex sm:flex-col sm:justify-items-center sm:ml-3 sm:mr-3">
+    <div class="grid grid-cols-2 ml-5 md:flex md:flex-col md:justify-items-center md:ml-3 md:mr-3 sm:flex sm:flex-col sm:justify-items-center sm:ml-3 sm:mr-3">
       <div class="mt-10">
         <h1 class="text-lg mb-5 underline">Essais cliniques</h1>
         <div class="grid grid-cols-2 gap-3">
@@ -18,7 +18,7 @@
         </div>
       </div>
       <!-- ____________________________________ -->
-      <div class="flex flex-col mt-10 gap-7 ml-3 mr-3 mb-10 sm:mr-0 sm:ml-0">
+      <div class="flex flex-col mt-10 gap-7 ml-3 mr-3 mb-10 md:mr-0 md:ml-0 sm:mr-0 sm:ml-0">
         <aside class="w-full">
           <h1 class="text-lg mb-5 underline">Qui sommes nous ?</h1>
           <p>

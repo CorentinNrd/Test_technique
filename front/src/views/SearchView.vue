@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between mt-10 sm:flex-col sm:items-center">
+  <div class="flex justify-between mt-10 md:flex-col md:items-center sm:flex-col sm:items-center">
     <form
       class="
         flex flex-col
@@ -8,6 +8,7 @@
         ml-5
         mr-5
         w-1/4
+        md:w-3/4 md:ml-0 md:mr-0
         sm:w-3/4 sm:ml-0 sm:mr-0
       "
       @submit.prevent="createPost"
@@ -516,7 +517,7 @@
       </div>
     </form>
     <div id="result" class="w-full">
-      <h1 class="text-lg underline text-center sm:mt-10">Résultats</h1>
+      <h1 class="text-lg underline text-center md:mt-10 sm:mt-10">Résultats</h1>
       <p class="text-red-600 mt-10 text-center">{{ errorSave }}</p>
       <p v-if="error" class="mt-10 text-center">{{ error }}</p>
       <div
@@ -524,6 +525,7 @@
           grid grid-cols-2
           mt-10
           justify-items-center
+          md:flex md:flex-col md:items-center
           sm:flex sm:flex-col sm:items-center
         "
       >
