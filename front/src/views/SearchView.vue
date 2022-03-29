@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between mt-10">
+  <div class="flex justify-between mt-10 sm:flex-col sm:items-center">
     <form
-      class="flex flex-col gap-7 border ml-5 mr-5 w-1/4"
+      class="flex flex-col gap-7 border ml-5 mr-5 w-1/4 sm:w-3/4 sm:ml-0 sm:mr-0"
       @submit.prevent="createPost"
     >
       <section id="situation" class="flex ml-3 mt-3">
@@ -334,10 +334,10 @@
       </div>
     </form>
     <div id="result" class="w-full">
-      <h1 class="text-lg underline text-center">Résultats</h1>
+      <h1 class="text-lg underline text-center sm:mt-10">Résultats</h1>
       <p class="text-red-600 mt-10 text-center">{{ errorSave }}</p>
       <p v-if="error" class="mt-10 text-center">{{ error }}</p>
-      <div class="grid grid-cols-2 mt-10 justify-items-center">
+      <div class="grid grid-cols-2 mt-10 justify-items-center sm:flex sm:flex-col sm:items-center">
         <ul
           v-for="results in result"
           v-bind:key="results.id"

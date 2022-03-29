@@ -25,7 +25,11 @@ router.post("/search", async (req, res, next) => {
     let specialite = req.body.search.specialite;
 
     result.Sheet1.map(element => {
-        if (specialite == element.B && situation == element.D) {
+        if (organes == element.C && specialite == element.B && situation == element.D) {
+            array.push(element)
+            console.log("Dans le if", element);
+            return element;
+        } else if (specialite == element.B && situation == element.D) {
             array.push(element)
             return element;
         } else if (specialite == undefined && situation == element.D) {
@@ -34,12 +38,10 @@ router.post("/search", async (req, res, next) => {
         } else if (specialite == element.B && situation == undefined) {
             array.push(element)
             return element;
-        } else if (organes === element.C && specialite == element.B && situation == element.D) {
-            array.push(element)
-            return element;
         }
     })
 
+    console.log("Hors du if", array);
     res.send(array)
 })
 
