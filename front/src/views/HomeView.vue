@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="w-full h-[300px] bg-blue-300"></div>
-    <div class="grid grid-cols-2 ml-5">
+    <div class="grid grid-cols-2 ml-5 sm:flex sm:flex-col sm:justify-items-center sm:ml-3 sm:mr-3">
       <div class="mt-10">
         <h1 class="text-lg mb-5 underline">Essais cliniques</h1>
-        <div class="grid grid-cols-2 ">
+        <div class="grid grid-cols-2 gap-3">
           <ul
             v-for="infos in info"
             v-bind:key="infos.id"
-            class="border rounded mr-3 mb-7"
+            class="border rounded mb-7"
           >
             <li class="ml-2 mt-2 mb-2">ID : {{ infos.A }}</li>
             <li class="ml-2 mt-2 mb-2">Spécialité : {{ infos.B }}</li>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <!-- ____________________________________ -->
-      <div class="flex flex-col mt-10 gap-7 mr-5 mb-10 ml-5">
+      <div class="flex flex-col mt-10 gap-7 ml-3 mr-3 mb-10 sm:mr-0 sm:ml-0">
         <aside class="w-full">
           <h1 class="text-lg mb-5 underline">Qui sommes nous ?</h1>
           <p>
