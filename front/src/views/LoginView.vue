@@ -9,7 +9,7 @@
         hover:text-gray-600 hover:underline
       "
       to="/inscription"
-      >Vous avez pas encore de compte ?</router-link
+      >Vous n'avez pas encore de compte ?</router-link
     >
   </div>
 </template>
