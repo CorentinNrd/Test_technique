@@ -42,8 +42,6 @@ router.post("/search", async (req, res, next) => {
             return element;
         }
     })
-
-    console.log(array);
     res.send(array)
 })
 
